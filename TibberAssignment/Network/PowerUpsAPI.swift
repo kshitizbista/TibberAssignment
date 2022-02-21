@@ -11,7 +11,7 @@ import Combine
 class PowerUpsAPI {
     private static let api = "https://app.tibber.com/v4/gql"
     
-    static func fetchData(payload: Payload) -> AnyPublisher<[PowerUps], APIError> {
+    static func fetchData(payload: Payload) -> AnyPublisher<[PowerUps], AppError> {
         let url = URL(string: api)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -23,13 +23,13 @@ class PowerUpsAPI {
                     let httpURLResponse = response.response as? HTTPURLResponse,
                     httpURLResponse.statusCode == 200
                 else {
-                    throw APIError.statusCode
+                    throw AppError.statusCode
                 }
                 return response.data
             }
             .decode(type: Response<[PowerUps]>.self, decoder: JSONDecoder())
             .map({$0.data.assignmentData})
-            .mapError({APIError.map($0)})
+            .mapError({AppError.map($0)})
             .eraseToAnyPublisher()
     }
 }

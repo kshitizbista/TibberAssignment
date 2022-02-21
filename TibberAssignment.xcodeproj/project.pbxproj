@@ -18,7 +18,7 @@
 		39932B4227C39CBB0048A02B /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4127C39CBB0048A02B /* Payload.swift */; };
 		39932B4427C3B1240048A02B /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4327C3B1240048A02B /* Response.swift */; };
 		39932B4627C3C7B40048A02B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4527C3C7B40048A02B /* ImageDownloader.swift */; };
-		39932B4827C3CA840048A02B /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4727C3CA840048A02B /* APIError.swift */; };
+		39932B4827C3CA840048A02B /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4727C3CA840048A02B /* AppError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		39932B4127C39CBB0048A02B /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		39932B4327C3B1240048A02B /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		39932B4527C3C7B40048A02B /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
-		39932B4727C3CA840048A02B /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		39932B4727C3CA840048A02B /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +96,7 @@
 				39932B3F27C3971D0048A02B /* PowerUps.swift */,
 				39932B4127C39CBB0048A02B /* Payload.swift */,
 				39932B4327C3B1240048A02B /* Response.swift */,
-				39932B4727C3CA840048A02B /* APIError.swift */,
+				39932B4727C3CA840048A02B /* AppError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -180,7 +180,7 @@
 				392EA82727C393B8000C8A00 /* SceneDelegate.swift in Sources */,
 				39932B3E27C396B80048A02B /* PowerUpsAPI.swift in Sources */,
 				39932B4427C3B1240048A02B /* Response.swift in Sources */,
-				39932B4827C3CA840048A02B /* APIError.swift in Sources */,
+				39932B4827C3CA840048A02B /* AppError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

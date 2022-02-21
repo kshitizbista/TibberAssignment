@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum APIError: Error {
+enum AppError: Error {
     case statusCode
     case decoding
     case invalidImage
     case invalidURL
     case other(Error)
     
-    static func map(_ error: Error) -> APIError {
-        return (error as? APIError) ?? .other(error)
+    static func map(_ error: Error) -> AppError {
+        return (error as? AppError) ?? .other(error)
     }
 }

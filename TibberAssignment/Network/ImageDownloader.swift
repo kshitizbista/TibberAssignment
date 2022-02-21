@@ -11,9 +11,9 @@ import UIKit
 
 class ImageDownloader {
     
-    static func download(url: String) -> AnyPublisher<UIImage, APIError> {
+    static func download(url: String) -> AnyPublisher<UIImage, AppError> {
         guard let url = URL(string: url) else {
-            return Fail(error: APIError.invalidURL).eraseToAnyPublisher()
+            return Fail(error: AppError.invalidURL).eraseToAnyPublisher()
         }
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap { response -> Data in
@@ -21,17 +21,17 @@ class ImageDownloader {
                     let httpURLResponse = response.response as? HTTPURLResponse,
                     httpURLResponse.statusCode == 200
                 else {
-                    throw APIError.statusCode
+                    throw AppError.statusCode
                 }
                 return response.data
             }
             .tryMap { data in
                 guard let image = UIImage(data: data) else {
-                    throw APIError.invalidImage
+                    throw AppError.invalidImage
                 }
                 return image
             }
-            .mapError({ APIError.map($0)})
+            .mapError({ AppError.map($0)})
             .eraseToAnyPublisher()
     }
 }
