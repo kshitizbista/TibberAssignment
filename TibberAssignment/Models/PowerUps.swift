@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PowerUps: Decodable {
+struct PowerUps: Decodable, Hashable {
     let title: String
     let description: String
     let longDescription: String
