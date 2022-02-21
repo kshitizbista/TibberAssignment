@@ -18,7 +18,6 @@ class PowerUpsViewController: UIViewController {
     }()
     
     private lazy var dataSource = makeDataSource()
-    private var powerUpsList = [PowerUps]()
     var subscriptions = Set<AnyCancellable>()
     
     // MARK: - Types
@@ -34,6 +33,7 @@ class PowerUpsViewController: UIViewController {
         super.viewDidLoad()
         title = "PowerUps"
         view.addSubview(collectionView)
+        collectionView.delegate = self
         collectionView.frame = view.bounds
         collectionView.register(PowerUpsCollectionViewCell.self,
                                 forCellWithReuseIdentifier: PowerUpsCollectionViewCell.identifier)
@@ -118,5 +118,17 @@ extension PowerUpsViewController {
         section.boundarySupplementaryItems = [sectionHeader]
         
         return UICollectionViewCompositionalLayout(section: section)
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension PowerUpsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let powerUp = dataSource.itemIdentifier(for: indexPath) else {
+            return
+        }
+        let vc = PowerUpDetailViewController(powerUp: powerUp)
+        vc.title = powerUp.title
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
