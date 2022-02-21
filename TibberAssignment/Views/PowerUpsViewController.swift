@@ -21,7 +21,7 @@ class PowerUpsViewController: UIViewController {
     var subscriptions = Set<AnyCancellable>()
     
     // MARK: - Types
-    enum Section: CaseIterable {
+    enum Section {
         case active
         case inactive
     }
@@ -50,7 +50,6 @@ class PowerUpsViewController: UIViewController {
             cell?.configure(model: powerUps)
             return cell
         }
-        
         dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             guard kind == UICollectionView.elementKindSectionHeader else {
                 return nil
@@ -68,15 +67,21 @@ class PowerUpsViewController: UIViewController {
             }
             return header
         }
-        
         return dataSource
     }
     
     func applySnapshot(animatingDifferences: Bool = false, data: [PowerUps]) {
         var snapshot = Snapshot()
-        snapshot.appendSections(Section.allCases)
-        snapshot.appendItems(data.filter({ $0.connected }), toSection: .active)
-        snapshot.appendItems(data.filter({ !$0.connected }), toSection: .inactive)
+        let activePowerUps = data.filter({ $0.connected })
+        let inactivePowerUps = data.filter({ !$0.connected })
+        if !activePowerUps.isEmpty {
+            snapshot.appendSections([.active])
+            snapshot.appendItems(activePowerUps, toSection: .active)
+        }
+        if !inactivePowerUps.isEmpty {
+            snapshot.appendSections([.inactive])
+            snapshot.appendItems(inactivePowerUps, toSection: .inactive)
+        }
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
     
