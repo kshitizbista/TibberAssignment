@@ -77,7 +77,6 @@ class PowerUpsCollectionViewCell: UICollectionViewCell {
                 self.imageView.image = image
             }.store(in: &subscription)
         titleLabel.text = model.title
-        print(model.title)
         shortDescription.text = model.description
     }
 }

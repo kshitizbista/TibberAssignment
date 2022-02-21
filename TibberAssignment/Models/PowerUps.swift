@@ -16,3 +16,21 @@ struct PowerUps: Decodable, Hashable {
     let imageUrl: String
 }
 
+extension PowerUps {
+    private static let GraphQLQuery =
+        """
+        {
+            assignmentData {
+                title
+                description
+                longDescription
+                connected
+                storeUrl
+                imageUrl
+            }
+        }
+        """
+    
+    static let payload = Payload(query: GraphQLQuery)
+}
+

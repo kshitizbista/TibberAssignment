@@ -81,27 +81,13 @@ class PowerUpsViewController: UIViewController {
     }
     
     func subscribeToAPICall() {
-        let query =
-            """
-            {
-                assignmentData {
-                    title
-                    description
-                    longDescription
-                    connected
-                    storeUrl
-                    imageUrl
-                }
-            }
-            """
-        let payload = Payload(query: query)
-        PowerUpsAPI.fetchData(payload: payload)
+        PowerUpsAPI.fetchData(payload: PowerUps.payload)
             .receive(on: DispatchQueue.main)
             .replaceError(with: [])
             .sink { [unowned self] data in
                 applySnapshot(data: data)
-            }.store(in: &subscriptions)
-        
+            }
+            .store(in: &subscriptions)
     }
 }
 
