@@ -13,7 +13,7 @@ class SectionHeaderReusableView: UICollectionReusableView {
     var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .title1).pointSize, weight: .bold)
+        label.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize)
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .label
         label.textAlignment = .left
@@ -24,7 +24,7 @@ class SectionHeaderReusableView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemBackground
+
         addSubview(titleLabel)
         addConstraint()
     }

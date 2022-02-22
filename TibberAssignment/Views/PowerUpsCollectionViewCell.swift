@@ -12,6 +12,14 @@ class PowerUpsCollectionViewCell: UICollectionViewCell {
     static let identifier = "PowerUpsCollectionViewCell"
     var subscription = Set<AnyCancellable>()
     
+    private let view: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 15
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
@@ -22,6 +30,7 @@ class PowerUpsCollectionViewCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let titleLabel =  UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.numberOfLines = 1
         return titleLabel
     }()
     
@@ -34,9 +43,10 @@ class PowerUpsCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(imageView)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(shortDescription)
+        contentView.addSubview(view)
+        view.addSubview(imageView)
+        view.addSubview(titleLabel)
+        view.addSubview(shortDescription)
         addConstraint()
     }
     
@@ -47,17 +57,24 @@ class PowerUpsCollectionViewCell: UICollectionViewCell {
     private  func addConstraint() {
         var constraints = [NSLayoutConstraint]()
         
-        constraints.append(imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20))
-        constraints.append(imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 18))
+        constraints.append(view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor))
+        constraints.append(view.topAnchor.constraint(equalTo: contentView.topAnchor))
+        constraints.append(view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor))
+        constraints.append(view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor))
+        
+        constraints.append(imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20))
+        constraints.append(imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor))
         constraints.append(imageView.widthAnchor.constraint(equalToConstant: 70))
         constraints.append(imageView.heightAnchor.constraint(equalToConstant: 70))
         
         constraints.append(titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16))
         constraints.append(titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 18))
         constraints.append(titleLabel.heightAnchor.constraint(equalToConstant: 24))
-        
+
         constraints.append(shortDescription.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16))
+        constraints.append(shortDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -56))
         constraints.append(shortDescription.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2))
+        constraints.append(shortDescription.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16))
         
         NSLayoutConstraint.activate(constraints)
     }
