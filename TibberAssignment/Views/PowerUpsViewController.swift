@@ -16,7 +16,6 @@ class PowerUpsViewController: UIViewController {
         collectionView.backgroundColor =  UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         return collectionView
     }()
-    
     private lazy var dataSource = makeDataSource()
     var subscriptions = Set<AnyCancellable>()
     
@@ -35,41 +34,11 @@ class PowerUpsViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.frame = view.bounds
-        collectionView.register(PowerUpsCollectionViewCell.self,
-                                forCellWithReuseIdentifier: PowerUpsCollectionViewCell.identifier)
-        collectionView.register(SectionHeaderReusableView.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                withReuseIdentifier: SectionHeaderReusableView.identifier)
+        cellRegistration()
         subscribeToAPICall()
     }
     
     // MARK: - Functions
-    func makeDataSource() -> DataSource {
-        let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, powerUps in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PowerUpsCollectionViewCell.identifier, for: indexPath) as? PowerUpsCollectionViewCell
-            cell?.configure(model: powerUps)
-            return cell
-        }
-        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-            guard kind == UICollectionView.elementKindSectionHeader else {
-                return nil
-            }
-            let header = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: SectionHeaderReusableView.identifier,
-                for: indexPath) as? SectionHeaderReusableView
-            let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
-            switch section {
-            case .active:
-                header?.titleLabel.text = "Active power-ups"
-            case .inactive:
-                header?.titleLabel.text = "Available power-ups"
-            }
-            return header
-        }
-        return dataSource
-    }
-    
     func applySnapshot(animatingDifferences: Bool = false, data: [PowerUps]) {
         var snapshot = Snapshot()
         let activePowerUps = data.filter({ $0.connected })
@@ -94,35 +63,95 @@ class PowerUpsViewController: UIViewController {
             }
             .store(in: &subscriptions)
     }
+    
+    func cellRegistration() {
+        collectionView.register(PowerUpsCollectionViewCell.self,
+                                forCellWithReuseIdentifier: PowerUpsCollectionViewCell.identifier)
+        collectionView.register(SectionHeaderReusableView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: SectionHeaderReusableView.identifier)
+        collectionView.register(DisclosureAccessoryReusableView.self,
+                                forSupplementaryViewOfKind: DisclosureAccessoryReusableView.identifier,
+                                withReuseIdentifier: DisclosureAccessoryReusableView.identifier)
+    }
 }
 
 // MARK: - Layout Handling
 extension PowerUpsViewController {
     private static func configureLayout() -> UICollectionViewCompositionalLayout {
+        
         let size = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
             heightDimension: .estimated(100))
         let itemCount = 1
-        let item = NSCollectionLayoutItem(layoutSize: size)
+        
+        let disclosureAccessoryAnchor = NSCollectionLayoutAnchor(edges: [.trailing])
+        let disclosureAccessorySize = NSCollectionLayoutSize(
+            widthDimension: .estimated(18),
+            heightDimension: .estimated(18))
+        let disclosureAccessory = NSCollectionLayoutSupplementaryItem(
+            layoutSize: disclosureAccessorySize,
+            elementKind: DisclosureAccessoryReusableView.identifier,
+            containerAnchor: disclosureAccessoryAnchor)
+        
+        let item = NSCollectionLayoutItem(layoutSize: size, supplementaryItems: [disclosureAccessory])
+        
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: size,
             subitem: item,
             count: itemCount)
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 14.5, bottom: 0, trailing: 14.5)
+        section.interGroupSpacing = 10
         
-        let headerSize = NSCollectionLayoutSize(
+        let headerFooterSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
             heightDimension: .estimated(30))
         
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
+            layoutSize: headerFooterSize,
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top)
         
         section.boundarySupplementaryItems = [sectionHeader]
         
         return UICollectionViewCompositionalLayout(section: section)
+    }
+}
+
+// MARK: - DataSource
+extension PowerUpsViewController {
+    func makeDataSource() -> DataSource {
+        let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, powerUps in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PowerUpsCollectionViewCell.identifier, for: indexPath) as? PowerUpsCollectionViewCell
+            cell?.configure(model: powerUps)
+            return cell
+        }
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            switch kind {
+            case DisclosureAccessoryReusableView.identifier:
+                let disclosureAccessory = collectionView.dequeueReusableSupplementaryView(ofKind: DisclosureAccessoryReusableView.identifier, withReuseIdentifier: DisclosureAccessoryReusableView.identifier, for: indexPath) as! DisclosureAccessoryReusableView
+                return disclosureAccessory
+                
+            case UICollectionView.elementKindSectionHeader:
+                let header = collectionView.dequeueReusableSupplementaryView(
+                    ofKind: kind,
+                    withReuseIdentifier: SectionHeaderReusableView.identifier,
+                    for: indexPath) as? SectionHeaderReusableView
+                let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+                switch section {
+                case .active:
+                    header?.titleLabel.text = "Active power-ups"
+                case .inactive:
+                    header?.titleLabel.text = "Available power-ups"
+                }
+                return header
+            default:
+                assertionFailure("Handle new kind")
+                return nil
+            }
+        }
+        return dataSource
     }
 }
 

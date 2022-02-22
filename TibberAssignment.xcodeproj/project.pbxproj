@@ -16,6 +16,7 @@
 		3940315827C3E6D400C2E815 /* PowerUpsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940315727C3E6D400C2E815 /* PowerUpsCollectionViewCell.swift */; };
 		3940315A27C42C7100C2E815 /* SectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940315927C42C7100C2E815 /* SectionHeaderReusableView.swift */; };
 		3940315C27C4398300C2E815 /* PowerUpDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940315B27C4398300C2E815 /* PowerUpDetailViewController.swift */; };
+		3940317E27C51C6B00C2E815 /* DisclosureAccessoryReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940317D27C51C6B00C2E815 /* DisclosureAccessoryReusableView.swift */; };
 		39932B3E27C396B80048A02B /* PowerUpsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B3D27C396B80048A02B /* PowerUpsAPI.swift */; };
 		39932B4027C3971D0048A02B /* PowerUps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B3F27C3971D0048A02B /* PowerUps.swift */; };
 		39932B4227C39CBB0048A02B /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4127C39CBB0048A02B /* Payload.swift */; };
@@ -36,6 +37,7 @@
 		3940315727C3E6D400C2E815 /* PowerUpsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpsCollectionViewCell.swift; sourceTree = "<group>"; };
 		3940315927C42C7100C2E815 /* SectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableView.swift; sourceTree = "<group>"; };
 		3940315B27C4398300C2E815 /* PowerUpDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpDetailViewController.swift; sourceTree = "<group>"; };
+		3940317D27C51C6B00C2E815 /* DisclosureAccessoryReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureAccessoryReusableView.swift; sourceTree = "<group>"; };
 		39932B3D27C396B80048A02B /* PowerUpsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpsAPI.swift; sourceTree = "<group>"; };
 		39932B3F27C3971D0048A02B /* PowerUps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUps.swift; sourceTree = "<group>"; };
 		39932B4127C39CBB0048A02B /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				3940315727C3E6D400C2E815 /* PowerUpsCollectionViewCell.swift */,
 				3940315927C42C7100C2E815 /* SectionHeaderReusableView.swift */,
 				3940315B27C4398300C2E815 /* PowerUpDetailViewController.swift */,
+				3940317D27C51C6B00C2E815 /* DisclosureAccessoryReusableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				3940315C27C4398300C2E815 /* PowerUpDetailViewController.swift in Sources */,
 				39932B4427C3B1240048A02B /* Response.swift in Sources */,
 				3940315827C3E6D400C2E815 /* PowerUpsCollectionViewCell.swift in Sources */,
+				3940317E27C51C6B00C2E815 /* DisclosureAccessoryReusableView.swift in Sources */,
 				39932B4827C3CA840048A02B /* AppError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
