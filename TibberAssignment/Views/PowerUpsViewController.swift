@@ -87,13 +87,16 @@ class PowerUpsViewController: UIViewController {
         PowerUpsAPI.fetchData(payload: PowerUps.payload)
             .receive(on: DispatchQueue.main)
             .replaceError(with: [])
-            .sink { [unowned self] data in
-                activityIndicator.removeFromSuperview()
+            .sink { [weak self] data in
+                guard let self = self else {
+                    return
+                }
+                self.activityIndicator.removeFromSuperview()
                 if data.count > 0 {
-                    powerUps = data
-                    applySnapshot(data: sort(powerUps))
+                    self.powerUps = data
+                    self.applySnapshot(data: self.sort(self.powerUps))
                 } else {
-                    noPowerUpsLabel.isHidden = false
+                    self.noPowerUpsLabel.isHidden = false
                 }
             }
             .store(in: &subscriptions)
@@ -159,7 +162,7 @@ extension PowerUpsViewController {
         return UICollectionViewCompositionalLayout(section: section)
     }
 }
-
+    
 // MARK: - DataSource
 extension PowerUpsViewController {
     func makeDataSource() -> DataSource {
