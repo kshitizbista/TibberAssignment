@@ -17,7 +17,8 @@ class PowerUpsViewController: UIViewController {
         return collectionView
     }()
     private lazy var dataSource = makeDataSource()
-    var subscriptions = Set<AnyCancellable>()
+    private var subscriptions = Set<AnyCancellable>()
+    private var powerUps = [PowerUps]()
     
     // MARK: - Types
     enum Section {
@@ -59,7 +60,8 @@ class PowerUpsViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .replaceError(with: [])
             .sink { [unowned self] data in
-                applySnapshot(data: data)
+                powerUps = data
+                applySnapshot(data: powerUps)
             }
             .store(in: &subscriptions)
     }
@@ -161,8 +163,17 @@ extension PowerUpsViewController: UICollectionViewDelegate {
         guard let powerUp = dataSource.itemIdentifier(for: indexPath) else {
             return
         }
+        subscriptions.removeAll()
         let vc = PowerUpDetailViewController(powerUp: powerUp)
         vc.title = powerUp.title
         navigationController?.pushViewController(vc, animated: true)
+        vc.didConnectButtonTap
+            .sink { [unowned self] selectedPowerUp in
+                if let index = self.powerUps.firstIndex( where: {$0.id == selectedPowerUp.id}) {
+                    powerUps[index] = selectedPowerUp
+                    applySnapshot(data: powerUps)
+                }
+            }
+            .store(in: &subscriptions)
     }
 }

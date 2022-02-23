@@ -8,12 +8,17 @@
 import Foundation
 
 struct PowerUps: Decodable, Hashable {
+    var id = UUID()
     let title: String
     let description: String
     let longDescription: String
-    let connected: Bool
+    var connected: Bool
     let storeUrl: String
     let imageUrl: String
+    
+    enum CodingKeys: String, CodingKey {
+          case title, description, longDescription, connected, storeUrl, imageUrl
+      }
 }
 
 extension PowerUps {

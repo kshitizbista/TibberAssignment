@@ -11,8 +11,9 @@ import Combine
 class PowerUpDetailViewController: UIViewController {
     
     // MARK: - Properties
-    let powerUp: PowerUps
-    var subscription = Set<AnyCancellable>()
+    private var powerUp: PowerUps
+    private var subscription = Set<AnyCancellable>()
+    let didConnectButtonTap = PassthroughSubject<PowerUps, Never>()
     
     // MARK: - Views
     private var scrollView: UIScrollView = {
@@ -24,15 +25,6 @@ class PowerUpDetailViewController: UIViewController {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
-    }()
-    
-    private lazy var verticalStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.spacing = 34
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
     }()
     
     private let headerView: UIView = {
@@ -65,12 +57,10 @@ class PowerUpDetailViewController: UIViewController {
     
     private let connectButtton : UIButton = {
         let button = UIButton()
-        button.setTitle("Connect To Tibber", for: .normal)
-        button.backgroundColor = UIColor(red: 0.137, green: 0.722, blue: 0.8, alpha: 1)
-        button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 24
         button.titleLabel?.textAlignment = .center
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(connectButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -125,15 +115,16 @@ class PowerUpDetailViewController: UIViewController {
     }
     
     // MARK: - Functions
-    func setUI() {
+    private func setUI() {
         titleLabel.text = powerUp.title
         shortDescription.text = powerUp.description
         descriptionLabel.text = powerUp.longDescription
         descriptionTitleLabel.text = "More About \(powerUp.title)"
+        updateConnectButtonState(isConnected: powerUp.connected)
         subscribeToAPICall(url: powerUp.imageUrl)
     }
     
-    func subscribeToAPICall(url: String) {
+    private func subscribeToAPICall(url: String) {
         ImageDownloader.download(url: url)
             .receive(on: DispatchQueue.main)
             .sink { [unowned self] completion in
@@ -146,6 +137,32 @@ class PowerUpDetailViewController: UIViewController {
             } receiveValue: { [unowned self] image in
                 self.imageView.image = image
             }.store(in: &subscription)
+    }
+    
+    @objc private func connectButtonTapped() {
+        powerUp.connected = !powerUp.connected
+        updateConnectButtonState(isConnected: powerUp.connected)
+        didConnectButtonTap.send(powerUp)
+    }
+    
+    private func updateConnectButtonState(isConnected: Bool) {
+        if !isConnected {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                self.connectButtton.setTitle("Connect To Tibber", for: .normal)
+                self.connectButtton.setTitleColor(.white, for: .normal)
+                self.connectButtton.backgroundColor = UIColor(red: 0.137, green: 0.722, blue: 0.8, alpha: 1)
+                self.connectButtton.layer.borderColor = nil
+                self.connectButtton.layer.borderWidth = 0
+            })
+        } else {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
+                self.connectButtton.setTitle("Disconnect from Tibber", for: .normal)
+                self.connectButtton.setTitleColor(.red, for: .normal)
+                self.connectButtton.layer.borderColor = UIColor.red.cgColor
+                self.connectButtton.layer.borderWidth = 1
+                self.connectButtton.backgroundColor = nil
+            })
+        }
     }
 }
 
