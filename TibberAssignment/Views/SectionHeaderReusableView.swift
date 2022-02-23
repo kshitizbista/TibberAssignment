@@ -15,9 +15,9 @@ class SectionHeaderReusableView: UICollectionReusableView {
     var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize)
+        label.font = .systemFont(ofSize: 14)
         label.adjustsFontForContentSizeCategory = true
-        label.textColor = .label
+        label.textColor = UIColor(named: K.BrandColor.titleSmall)
         label.textAlignment = .left
         label.numberOfLines = 1
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)

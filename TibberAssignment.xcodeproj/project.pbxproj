@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		392C1E7827C6AB2C00062F57 /* PowerUpDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940315B27C4398300C2E815 /* PowerUpDetailViewController.swift */; };
 		392EA82527C393B8000C8A00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EA82427C393B8000C8A00 /* AppDelegate.swift */; };
 		392EA82727C393B8000C8A00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EA82627C393B8000C8A00 /* SceneDelegate.swift */; };
 		392EA82927C393B8000C8A00 /* PowerUpsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EA82827C393B8000C8A00 /* PowerUpsViewController.swift */; };
@@ -15,8 +16,8 @@
 		392EA83127C393B9000C8A00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 392EA82F27C393B9000C8A00 /* LaunchScreen.storyboard */; };
 		3940315827C3E6D400C2E815 /* PowerUpsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940315727C3E6D400C2E815 /* PowerUpsCollectionViewCell.swift */; };
 		3940315A27C42C7100C2E815 /* SectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940315927C42C7100C2E815 /* SectionHeaderReusableView.swift */; };
-		3940315C27C4398300C2E815 /* PowerUpDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940315B27C4398300C2E815 /* PowerUpDetailViewController.swift */; };
 		3940317E27C51C6B00C2E815 /* DisclosureAccessoryReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940317D27C51C6B00C2E815 /* DisclosureAccessoryReusableView.swift */; };
+		396BD7B927C6BCCE003031AF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396BD7B827C6BCCE003031AF /* Constant.swift */; };
 		39932B3E27C396B80048A02B /* PowerUpsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B3D27C396B80048A02B /* PowerUpsAPI.swift */; };
 		39932B4027C3971D0048A02B /* PowerUps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B3F27C3971D0048A02B /* PowerUps.swift */; };
 		39932B4227C39CBB0048A02B /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4127C39CBB0048A02B /* Payload.swift */; };
@@ -38,6 +39,7 @@
 		3940315927C42C7100C2E815 /* SectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableView.swift; sourceTree = "<group>"; };
 		3940315B27C4398300C2E815 /* PowerUpDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpDetailViewController.swift; sourceTree = "<group>"; };
 		3940317D27C51C6B00C2E815 /* DisclosureAccessoryReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureAccessoryReusableView.swift; sourceTree = "<group>"; };
+		396BD7B827C6BCCE003031AF /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		39932B3D27C396B80048A02B /* PowerUpsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpsAPI.swift; sourceTree = "<group>"; };
 		39932B3F27C3971D0048A02B /* PowerUps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUps.swift; sourceTree = "<group>"; };
 		39932B4127C39CBB0048A02B /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		392EA82327C393B8000C8A00 /* TibberAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				396BD7B727C6BCB5003031AF /* Resources */,
 				39932B4927C3D4A30048A02B /* Views */,
 				39932B3C27C396460048A02B /* Models */,
 				39932B3B27C396370048A02B /* Network */,
@@ -87,6 +90,14 @@
 				392EA83227C393B9000C8A00 /* Info.plist */,
 			);
 			path = TibberAssignment;
+			sourceTree = "<group>";
+		};
+		396BD7B727C6BCB5003031AF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				396BD7B827C6BCCE003031AF /* Constant.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		39932B3B27C396370048A02B /* Network */ = {
@@ -199,8 +210,9 @@
 				392EA82927C393B8000C8A00 /* PowerUpsViewController.swift in Sources */,
 				392EA82527C393B8000C8A00 /* AppDelegate.swift in Sources */,
 				392EA82727C393B8000C8A00 /* SceneDelegate.swift in Sources */,
+				396BD7B927C6BCCE003031AF /* Constant.swift in Sources */,
+				392C1E7827C6AB2C00062F57 /* PowerUpDetailViewController.swift in Sources */,
 				39932B3E27C396B80048A02B /* PowerUpsAPI.swift in Sources */,
-				3940315C27C4398300C2E815 /* PowerUpDetailViewController.swift in Sources */,
 				39932B4427C3B1240048A02B /* Response.swift in Sources */,
 				3940315827C3E6D400C2E815 /* PowerUpsCollectionViewCell.swift in Sources */,
 				3940317E27C51C6B00C2E815 /* DisclosureAccessoryReusableView.swift in Sources */,

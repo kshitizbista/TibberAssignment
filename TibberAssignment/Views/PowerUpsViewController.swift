@@ -11,14 +11,32 @@ import Combine
 class PowerUpsViewController: UIViewController {
     
     // MARK: - Properties
-    private let collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureLayout())
-        collectionView.backgroundColor =  UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        return collectionView
-    }()
     private lazy var dataSource = makeDataSource()
     private var subscriptions = Set<AnyCancellable>()
     private var powerUps = [PowerUps]()
+    
+    // MARK: - Views
+    private let collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureLayout())
+        collectionView.backgroundColor = UIColor(named: K.BrandColor.backgroundGrey)
+        return collectionView
+    }()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator =  UIActivityIndicatorView(style: .large)
+        return activityIndicator
+    }()
+    
+    private let noPowerUpsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "You have not setup any PowerUps"
+        label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = UIColor(named: K.BrandColor.titleSmall)
+        return label
+    }()
     
     // MARK: - Types
     enum Section {
@@ -32,14 +50,23 @@ class PowerUpsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "PowerUps"
-        view.addSubview(collectionView)
+        addSubviews()
         collectionView.delegate = self
-        collectionView.frame = view.bounds
         cellRegistration()
         subscribeToAPICall()
     }
     
     // MARK: - Functions
+    private func addSubviews() {
+        view.addSubview(collectionView)
+        view.addSubview(activityIndicator)
+        view.addSubview(noPowerUpsLabel)
+        collectionView.frame = view.bounds
+        activityIndicator.center = view.center
+        noPowerUpsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        noPowerUpsLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
     func applySnapshot(animatingDifferences: Bool = false, data: [PowerUps]) {
         var snapshot = Snapshot()
         let activePowerUps = data.filter({ $0.connected })
@@ -56,12 +83,18 @@ class PowerUpsViewController: UIViewController {
     }
     
     func subscribeToAPICall() {
+        activityIndicator.startAnimating()
         PowerUpsAPI.fetchData(payload: PowerUps.payload)
             .receive(on: DispatchQueue.main)
             .replaceError(with: [])
             .sink { [unowned self] data in
-                powerUps = data
-                applySnapshot(data: powerUps)
+                activityIndicator.removeFromSuperview()
+                if data.count > 0 {
+                    powerUps = data
+                    applySnapshot(data: sort(powerUps))
+                } else {
+                    noPowerUpsLabel.isHidden = false
+                }
             }
             .store(in: &subscriptions)
     }
@@ -75,6 +108,12 @@ class PowerUpsViewController: UIViewController {
         collectionView.register(DisclosureAccessoryReusableView.self,
                                 forSupplementaryViewOfKind: DisclosureAccessoryReusableView.identifier,
                                 withReuseIdentifier: DisclosureAccessoryReusableView.identifier)
+    }
+    
+    func sort(_ data: [PowerUps]) -> [PowerUps] {
+        return data.sorted { lhs, rhs in
+            lhs.title.lowercased() < rhs.title.lowercased()
+        }
     }
 }
 
@@ -171,7 +210,7 @@ extension PowerUpsViewController: UICollectionViewDelegate {
             .sink { [unowned self] selectedPowerUp in
                 if let index = self.powerUps.firstIndex( where: {$0.id == selectedPowerUp.id}) {
                     powerUps[index] = selectedPowerUp
-                    applySnapshot(data: powerUps)
+                    applySnapshot(data: sort(powerUps))
                 }
             }
             .store(in: &subscriptions)
