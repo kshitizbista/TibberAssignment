@@ -11,7 +11,10 @@ import UIKit
 
 class DisclosureAccessoryReusableView: UICollectionReusableView {
     
+    // MARK: - Properties
     static let identifier = "DisclosureAccessoryReusableView"
+    
+    // MARK: - Views
     private var imageView: UIImageView = {
         let label = UIImageView(image: UIImage(systemName: "chevron.right"))
         label.tintColor = .gray
@@ -19,20 +22,22 @@ class DisclosureAccessoryReusableView: UICollectionReusableView {
         return label
     }()
     
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(imageView)
-        addConstraint()
+        activateConstraint()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private  func addConstraint() {
-        var constraints = [NSLayoutConstraint]()
-        constraints.append(imageView.centerYAnchor.constraint(equalTo: centerYAnchor))
-        constraints.append(imageView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -10))
-        NSLayoutConstraint.activate(constraints)
+    // MARK: - Functions
+    private func activateConstraint() {
+        NSLayoutConstraint.activate([
+            imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -10)
+        ])
     }
 }

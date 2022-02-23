@@ -8,8 +8,10 @@
 import UIKit
 
 class SectionHeaderReusableView: UICollectionReusableView {
+    // MARK: - Properties
     static var identifier = "SectionHeaderReusableView"
     
+    // MARK: - Views
     var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -22,23 +24,24 @@ class SectionHeaderReusableView: UICollectionReusableView {
         return label
     }()
     
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         addSubview(titleLabel)
-        addConstraint()
+        activateConstraint()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private  func addConstraint() {
-        var constraints = [NSLayoutConstraint]()
-        constraints.append(titleLabel.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor))
-        constraints.append(titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: readableContentGuide.trailingAnchor))
-        constraints.append(titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10))
-        constraints.append(titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10))
-        NSLayoutConstraint.activate(constraints)
+    // MARK: - Functions
+    private func activateConstraint() {
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: readableContentGuide.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+        ])
     }
 }

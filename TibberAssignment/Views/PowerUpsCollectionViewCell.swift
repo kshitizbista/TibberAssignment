@@ -9,9 +9,12 @@ import UIKit
 import Combine
 
 class PowerUpsCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Properties
     static let identifier = "PowerUpsCollectionViewCell"
     var subscription = Set<AnyCancellable>()
     
+    // MARK: - Views
     private let view: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -22,7 +25,7 @@ class PowerUpsCollectionViewCell: UICollectionViewCell {
     
     private var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -41,20 +44,22 @@ class PowerUpsCollectionViewCell: UICollectionViewCell {
         return shortDescription
     }()
     
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(view)
         view.addSubview(imageView)
         view.addSubview(titleLabel)
         view.addSubview(shortDescription)
-        addConstraint()
+        activateConstraint()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private  func addConstraint() {
+    // MARK: - Functions
+    private func activateConstraint() {
         var constraints = [NSLayoutConstraint]()
         
         constraints.append(view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor))
@@ -68,7 +73,7 @@ class PowerUpsCollectionViewCell: UICollectionViewCell {
         constraints.append(imageView.heightAnchor.constraint(equalToConstant: 70))
         
         constraints.append(titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16))
-        constraints.append(titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 18))
+        constraints.append(titleLabel.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 18))
         constraints.append(titleLabel.heightAnchor.constraint(equalToConstant: 24))
 
         constraints.append(shortDescription.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16))
