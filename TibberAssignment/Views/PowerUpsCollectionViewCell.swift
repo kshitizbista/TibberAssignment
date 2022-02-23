@@ -33,6 +33,7 @@ class PowerUpsCollectionViewCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let titleLabel =  UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.font = .systemFont(ofSize: 16)
         titleLabel.numberOfLines = 1
         return titleLabel
     }()
@@ -41,6 +42,8 @@ class PowerUpsCollectionViewCell: UICollectionViewCell {
         let shortDescription =  UILabel()
         shortDescription.translatesAutoresizingMaskIntoConstraints = false
         shortDescription.numberOfLines = 0
+        shortDescription.font = .systemFont(ofSize: 16)
+        shortDescription.textColor = UIColor(named: K.BrandColor.titleSmall)
         return shortDescription
     }()
     

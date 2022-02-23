@@ -13,7 +13,7 @@ class PowerUpsViewController: UIViewController {
     // MARK: - Properties
     private let collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureLayout())
-        collectionView.backgroundColor =  UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        collectionView.backgroundColor = UIColor(named: K.BrandColor.backgroundGrey)
         return collectionView
     }()
     private lazy var dataSource = makeDataSource()

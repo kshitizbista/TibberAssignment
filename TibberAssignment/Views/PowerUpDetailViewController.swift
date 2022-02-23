@@ -19,6 +19,7 @@ class PowerUpDetailViewController: UIViewController {
     // MARK: - Views
     private var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.backgroundColor = .white
         return scrollView
     }()
     
@@ -30,7 +31,6 @@ class PowerUpDetailViewController: UIViewController {
     
     private let headerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -43,8 +43,9 @@ class PowerUpDetailViewController: UIViewController {
     }()
     
     private let titleLabel: UILabel = {
-        let titleLabel =  UILabel()
+        let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.font = .systemFont(ofSize: 16)
         titleLabel.numberOfLines = 1
         return titleLabel
     }()
@@ -53,7 +54,16 @@ class PowerUpDetailViewController: UIViewController {
         let shortDescription =  UILabel()
         shortDescription.translatesAutoresizingMaskIntoConstraints = false
         shortDescription.numberOfLines = 0
+        shortDescription.font = .systemFont(ofSize: 16)
+        shortDescription.textColor = UIColor(named: K.BrandColor.titleSmall)
         return shortDescription
+    }()
+    
+    private let buttonViews: UIView =  {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(named: K.BrandColor.backgroundGrey)
+        return view
     }()
     
     private let connectButtton : UIButton = {
@@ -61,6 +71,7 @@ class PowerUpDetailViewController: UIViewController {
         button.layer.cornerRadius = 24
         button.titleLabel?.textAlignment = .center
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = .systemFont(ofSize: 16)
         button.addTarget(self, action: #selector(connectButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -73,6 +84,7 @@ class PowerUpDetailViewController: UIViewController {
         button.layer.cornerRadius = 24
         button.titleLabel?.textAlignment = .center
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = .systemFont(ofSize: 16)
         button.addTarget(self, action: #selector(buyButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -80,7 +92,6 @@ class PowerUpDetailViewController: UIViewController {
     private let descriptionView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
         return view
     }()
     
@@ -95,6 +106,7 @@ class PowerUpDetailViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
+        label.textColor = UIColor(named: K.BrandColor.titleSmall)
         return label
     }()
     
@@ -120,7 +132,7 @@ class PowerUpDetailViewController: UIViewController {
     private func setUI() {
         titleLabel.text = powerUp.title
         shortDescription.text = powerUp.description
-        descriptionLabel.text = powerUp.longDescription
+        descriptionLabel.text = powerUp.longDescription + powerUp.longDescription + powerUp.longDescription
         descriptionTitleLabel.text = "More About \(powerUp.title)"
         updateConnectButtonState(isConnected: powerUp.connected)
         subscribeToAPICall(url: powerUp.imageUrl)
@@ -160,7 +172,7 @@ class PowerUpDetailViewController: UIViewController {
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
                 self.connectButtton.setTitle("Connect To Tibber", for: .normal)
                 self.connectButtton.setTitleColor(.white, for: .normal)
-                self.connectButtton.backgroundColor = UIColor(red: 0.137, green: 0.722, blue: 0.8, alpha: 1)
+                self.connectButtton.backgroundColor = UIColor(named: K.BrandColor.brandPrimary)
                 self.connectButtton.layer.borderColor = nil
                 self.connectButtton.layer.borderWidth = 0
             })
@@ -181,17 +193,17 @@ class PowerUpDetailViewController: UIViewController {
 extension PowerUpDetailViewController {
     
     private func addSubviews() {
-        view.backgroundColor =  UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         view.addSubview(scrollView)
         scrollView.frame = view.bounds
         scrollView.addSubview(contentView)
         contentView.addSubview(headerView)
-        contentView.addSubview(connectButtton)
-        contentView.addSubview(buyButtton)
         contentView.addSubview(descriptionView)
+        contentView.addSubview(buttonViews)
         headerView.addSubview(imageView)
         headerView.addSubview(titleLabel)
         headerView.addSubview(shortDescription)
+        buttonViews.addSubview(connectButtton)
+        buttonViews.addSubview(buyButtton)
         descriptionView.addSubview(descriptionTitleLabel)
         descriptionView.addSubview(descriptionLabel)
     }
@@ -228,18 +240,26 @@ extension PowerUpDetailViewController {
         ])
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16),
-            titleLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 18),
+            titleLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 20),
         ])
         NSLayoutConstraint.activate([
             shortDescription.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16),
             shortDescription.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -20),
             shortDescription.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2),
+            shortDescription.bottomAnchor.constraint(lessThanOrEqualTo: headerView.bottomAnchor, constant: -16),
         ])
     }
     
     private func activateButtonConstraint() {
         NSLayoutConstraint.activate([
-            connectButtton.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 32),
+            buttonViews.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            buttonViews.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            buttonViews.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            buttonViews.bottomAnchor.constraint(equalTo: descriptionView.topAnchor),
+        ])
+        
+        NSLayoutConstraint.activate([
+            connectButtton.topAnchor.constraint(equalTo: buttonViews.topAnchor, constant: 32),
             connectButtton.heightAnchor.constraint(equalToConstant: 48),
             connectButtton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 22.5),
             connectButtton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -22.5),
