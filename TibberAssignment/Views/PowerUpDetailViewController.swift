@@ -221,20 +221,19 @@ extension PowerUpDetailViewController {
         ])
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 20),
-            imageView.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 70),
-            imageView.heightAnchor.constraint(equalToConstant: 70)
+            imageView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 16),
+            imageView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -16),
+            imageView.widthAnchor.constraint(equalToConstant: 96),
+            imageView.heightAnchor.constraint(equalToConstant: 96)
         ])
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16),
             titleLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 18),
-            titleLabel.heightAnchor.constraint(equalToConstant: 24)
         ])
         NSLayoutConstraint.activate([
             shortDescription.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16),
-            shortDescription.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -10),
+            shortDescription.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -20),
             shortDescription.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2),
-            shortDescription.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -16)
         ])
     }
     
@@ -274,6 +273,7 @@ extension PowerUpDetailViewController {
     }
 }
 
+// MARK: - Safari Delegate
 extension PowerUpDetailViewController: SFSafariViewControllerDelegate {
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         dismiss(animated: true)
