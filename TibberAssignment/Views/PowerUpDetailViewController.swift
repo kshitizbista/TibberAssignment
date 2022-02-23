@@ -115,7 +115,7 @@ class PowerUpDetailViewController: UIViewController {
     init(powerUp: PowerUps) {
         self.powerUp = powerUp
         super.init(nibName: nil, bundle: nil)
-        setUI()
+        setUIState()
     }
     
     required init?(coder: NSCoder) {
@@ -129,10 +129,10 @@ class PowerUpDetailViewController: UIViewController {
     }
     
     // MARK: - Functions
-    private func setUI() {
+    private func setUIState() {
         titleLabel.text = powerUp.title
         shortDescription.text = powerUp.description
-        descriptionLabel.text = powerUp.longDescription + powerUp.longDescription + powerUp.longDescription
+        descriptionLabel.text = powerUp.longDescription
         descriptionTitleLabel.text = "More About \(powerUp.title)"
         updateConnectButtonState(isConnected: powerUp.connected)
         subscribeToAPICall(url: powerUp.imageUrl)
@@ -187,7 +187,6 @@ class PowerUpDetailViewController: UIViewController {
         }
     }
 }
-
 
 // MARK: - Layout Configuration
 extension PowerUpDetailViewController {
