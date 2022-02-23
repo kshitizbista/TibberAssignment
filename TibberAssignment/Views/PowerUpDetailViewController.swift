@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import SafariServices
 
 class PowerUpDetailViewController: UIViewController {
     
@@ -72,6 +73,7 @@ class PowerUpDetailViewController: UIViewController {
         button.layer.cornerRadius = 24
         button.titleLabel?.textAlignment = .center
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(buyButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -143,6 +145,14 @@ class PowerUpDetailViewController: UIViewController {
         powerUp.connected = !powerUp.connected
         updateConnectButtonState(isConnected: powerUp.connected)
         didConnectButtonTap.send(powerUp)
+    }
+    
+    @objc private func buyButtonTapped() {
+        if let url = URL(string: powerUp.storeUrl) {
+            let vc = SFSafariViewController(url: url)
+            vc.delegate = self
+            present(vc, animated: true)
+        }
     }
     
     private func updateConnectButtonState(isConnected: Bool) {
@@ -261,5 +271,11 @@ extension PowerUpDetailViewController {
             descriptionLabel.trailingAnchor.constraint(equalTo: descriptionView.trailingAnchor, constant: -20),
             descriptionLabel.bottomAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: -10),
         ])
+    }
+}
+
+extension PowerUpDetailViewController: SFSafariViewControllerDelegate {
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        dismiss(animated: true)
     }
 }
