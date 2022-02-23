@@ -141,15 +141,15 @@ class PowerUpDetailViewController: UIViewController {
     private func subscribeToAPICall(url: String) {
         ImageDownloader.download(url: url)
             .receive(on: DispatchQueue.main)
-            .sink { [unowned self] completion in
+            .sink { [weak self] completion in
                 switch completion {
                 case .failure(let error):
-                    self.imageView.image = UIImage(systemName: "photo.circle")
+                    self?.imageView.image = UIImage(systemName: "photo.circle")
                     print(error)
                 case .finished: break
                 }
-            } receiveValue: { [unowned self] image in
-                self.imageView.image = image
+            } receiveValue: { [weak self] image in
+                self?.imageView.image = image
             }.store(in: &subscription)
     }
     
