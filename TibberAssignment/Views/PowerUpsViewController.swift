@@ -14,6 +14,7 @@ class PowerUpsViewController: UIViewController {
     private lazy var dataSource = makeDataSource()
     private var subscriptions = Set<AnyCancellable>()
     private var powerUps = [PowerUps]()
+    let viewModal = PowerUpsViewModel()
     
     // MARK: - Views
     private let collectionView: UICollectionView = {
@@ -83,7 +84,7 @@ class PowerUpsViewController: UIViewController {
     }
     
     private func subscribePowerUpsAPI() {
-        PowerUpsAPI.fetchData(payload: PowerUps.payload)
+        viewModal.fetchData()
             .handleEvents(receiveSubscription: { [weak self] _ in
                 self?.activityIndicator.startAnimating()
             })
@@ -96,7 +97,7 @@ class PowerUpsViewController: UIViewController {
                 self.activityIndicator.removeFromSuperview()
                 if data.count > 0 {
                     self.powerUps = data
-                    self.applySnapshot(data: self.sort(self.powerUps))
+                    self.applySnapshot(data: self.viewModal.sort(self.powerUps))
                 } else {
                     self.noPowerUpsLabel.isHidden = false
                 }
@@ -113,12 +114,6 @@ class PowerUpsViewController: UIViewController {
         collectionView.register(DisclosureAccessoryReusableView.self,
                                 forSupplementaryViewOfKind: DisclosureAccessoryReusableView.identifier,
                                 withReuseIdentifier: DisclosureAccessoryReusableView.identifier)
-    }
-    
-    private func sort(_ data: [PowerUps]) -> [PowerUps] {
-        return data.sorted { lhs, rhs in
-            lhs.title.lowercased() < rhs.title.lowercased()
-        }
     }
 }
 
@@ -215,7 +210,7 @@ extension PowerUpsViewController: UICollectionViewDelegate {
             .sink { [unowned self] selectedPowerUp in
                 if let index = self.powerUps.firstIndex( where: {$0.id == selectedPowerUp.id}) {
                     powerUps[index] = selectedPowerUp
-                    applySnapshot(data: sort(powerUps))
+                    applySnapshot(data: viewModal.sort(powerUps))
                 }
             }
             .store(in: &subscriptions)

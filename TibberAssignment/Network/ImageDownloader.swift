@@ -17,13 +17,14 @@ class ImageDownloader {
         }
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap { response -> Data in
-                guard
-                    let httpURLResponse = response.response as? HTTPURLResponse,
-                    httpURLResponse.statusCode == 200
-                else {
-                    throw APIError.statusCode
+                guard let httpURLResponse = response.response as? HTTPURLResponse else {
+                    throw APIError.invalidResponse
                 }
-                return response.data
+                if httpURLResponse.statusCode == 200 {
+                    return response.data
+                } else {
+                    throw APIError.statusCode(httpURLResponse.statusCode)
+                }
             }
             .tryMap { data in
                 guard let image = UIImage(data: data) else {

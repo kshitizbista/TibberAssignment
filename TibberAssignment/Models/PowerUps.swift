@@ -17,25 +17,7 @@ struct PowerUps: Decodable, Hashable {
     let imageUrl: String
     
     enum CodingKeys: String, CodingKey {
-          case title, description, longDescription, connected, storeUrl, imageUrl
-      }
-}
-
-extension PowerUps {
-    private static let GraphQLQuery =
-        """
-        {
-            assignmentData {
-                title
-                description
-                longDescription
-                connected
-                storeUrl
-                imageUrl
-            }
-        }
-        """
-    
-    static let payload = Payload(query: GraphQLQuery)
+        case title, description, longDescription, connected, storeUrl, imageUrl
+    }
 }
 

@@ -10,12 +10,12 @@ import XCTest
 
 class PowerUpsAPITests: XCTestCase {
     
-    var sut: PowerUpsAPI!
+    var sut: PowerUpsService!
     let networkMonitor = NetworkMonitor.shared
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = PowerUpsAPI()
+        sut = PowerUpsService()
     }
 
     override func tearDownWithError() throws {
