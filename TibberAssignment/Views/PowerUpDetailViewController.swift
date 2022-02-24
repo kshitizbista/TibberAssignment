@@ -135,10 +135,10 @@ class PowerUpDetailViewController: UIViewController {
         descriptionLabel.text = powerUp.longDescription
         descriptionTitleLabel.text = "More About \(powerUp.title)"
         updateConnectButtonState(isConnected: powerUp.connected)
-        subscribeToAPICall(url: powerUp.imageUrl)
+        subscribeImageDownloadAPI(url: powerUp.imageUrl)
     }
     
-    private func subscribeToAPICall(url: String) {
+    private func subscribeImageDownloadAPI(url: String) {
         ImageDownloader.download(url: url)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in

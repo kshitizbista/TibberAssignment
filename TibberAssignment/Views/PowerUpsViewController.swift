@@ -53,7 +53,7 @@ class PowerUpsViewController: UIViewController {
         addSubviews()
         collectionView.delegate = self
         cellRegistration()
-        subscribeToAPICall()
+        subscribePowerUpsAPI()
     }
     
     // MARK: - Functions
@@ -67,7 +67,7 @@ class PowerUpsViewController: UIViewController {
         noPowerUpsLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
-    func applySnapshot(animatingDifferences: Bool = false, data: [PowerUps]) {
+    private func applySnapshot(animatingDifferences: Bool = false, data: [PowerUps]) {
         var snapshot = Snapshot()
         let activePowerUps = data.filter({ $0.connected })
         let inactivePowerUps = data.filter({ !$0.connected })
@@ -82,9 +82,11 @@ class PowerUpsViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
     
-    func subscribeToAPICall() {
-        activityIndicator.startAnimating()
+    private func subscribePowerUpsAPI() {
         PowerUpsAPI.fetchData(payload: PowerUps.payload)
+            .handleEvents(receiveSubscription: { [weak self] _ in
+                self?.activityIndicator.startAnimating()
+            })
             .receive(on: DispatchQueue.main)
             .replaceError(with: [])
             .sink { [weak self] data in
@@ -102,7 +104,7 @@ class PowerUpsViewController: UIViewController {
             .store(in: &subscriptions)
     }
     
-    func cellRegistration() {
+    private func cellRegistration() {
         collectionView.register(PowerUpsCollectionViewCell.self,
                                 forCellWithReuseIdentifier: PowerUpsCollectionViewCell.identifier)
         collectionView.register(SectionHeaderReusableView.self,
@@ -113,7 +115,7 @@ class PowerUpsViewController: UIViewController {
                                 withReuseIdentifier: DisclosureAccessoryReusableView.identifier)
     }
     
-    func sort(_ data: [PowerUps]) -> [PowerUps] {
+    private func sort(_ data: [PowerUps]) -> [PowerUps] {
         return data.sorted { lhs, rhs in
             lhs.title.lowercased() < rhs.title.lowercased()
         }
@@ -162,7 +164,7 @@ extension PowerUpsViewController {
         return UICollectionViewCompositionalLayout(section: section)
     }
 }
-    
+
 // MARK: - DataSource
 extension PowerUpsViewController {
     func makeDataSource() -> DataSource {
