@@ -26,7 +26,8 @@
 		39932B4627C3C7B40048A02B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4527C3C7B40048A02B /* ImageDownloader.swift */; };
 		39932B4827C3CA840048A02B /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4727C3CA840048A02B /* APIError.swift */; };
 		39D4031727C82E2000DE485D /* PowerUpsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D4031627C82E2000DE485D /* PowerUpsTests.swift */; };
-		39D4031E27C91FCC00DE485D /* ImageDownloaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D4031D27C91FCC00DE485D /* ImageDownloaderTest.swift */; };
+		39D4032027C9375500DE485D /* PowerUpsNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D4031F27C9375500DE485D /* PowerUpsNetworkTests.swift */; };
+		39D4032227C9378800DE485D /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D4032127C9378800DE485D /* NetworkMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +63,8 @@
 		39932B4727C3CA840048A02B /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		39D4031427C82E2000DE485D /* TibberAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TibberAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D4031627C82E2000DE485D /* PowerUpsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpsTests.swift; sourceTree = "<group>"; };
-		39D4031D27C91FCC00DE485D /* ImageDownloaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderTest.swift; sourceTree = "<group>"; };
+		39D4031F27C9375500DE485D /* PowerUpsNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpsNetworkTests.swift; sourceTree = "<group>"; };
+		39D4032127C9378800DE485D /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			children = (
 				394B68DC27C80882003D31C4 /* APIClient.swift */,
 				39932B4527C3C7B40048A02B /* ImageDownloader.swift */,
+				39D4032127C9378800DE485D /* NetworkMonitor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -170,7 +173,7 @@
 		39D4031527C82E2000DE485D /* TibberAssignmentTests */ = {
 			isa = PBXGroup;
 			children = (
-				39D4031D27C91FCC00DE485D /* ImageDownloaderTest.swift */,
+				39D4031F27C9375500DE485D /* PowerUpsNetworkTests.swift */,
 				39D4031627C82E2000DE485D /* PowerUpsTests.swift */,
 			);
 			path = TibberAssignmentTests;
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39932B4227C39CBB0048A02B /* Payload.swift in Sources */,
+				39D4032227C9378800DE485D /* NetworkMonitor.swift in Sources */,
 				39932B4027C3971D0048A02B /* PowerUps.swift in Sources */,
 				39932B4627C3C7B40048A02B /* ImageDownloader.swift in Sources */,
 				394B68E027C81FC9003D31C4 /* PowerUpsViewModel.swift in Sources */,
@@ -299,7 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39D4031E27C91FCC00DE485D /* ImageDownloaderTest.swift in Sources */,
+				39D4032027C9375500DE485D /* PowerUpsNetworkTests.swift in Sources */,
 				39D4031727C82E2000DE485D /* PowerUpsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
