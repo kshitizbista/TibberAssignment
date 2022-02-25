@@ -25,7 +25,19 @@
 		39932B4427C3B1240048A02B /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4327C3B1240048A02B /* Response.swift */; };
 		39932B4627C3C7B40048A02B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4527C3C7B40048A02B /* ImageDownloader.swift */; };
 		39932B4827C3CA840048A02B /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4727C3CA840048A02B /* APIError.swift */; };
+		39D4031727C82E2000DE485D /* PowerUpsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D4031627C82E2000DE485D /* PowerUpsTests.swift */; };
+		39D4031E27C91FCC00DE485D /* ImageDownloaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D4031D27C91FCC00DE485D /* ImageDownloaderTest.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		39D4031827C82E2000DE485D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 392EA81927C393B8000C8A00 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 392EA82027C393B8000C8A00;
+			remoteInfo = TibberAssignment;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		392EA82127C393B8000C8A00 /* TibberAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TibberAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,10 +60,20 @@
 		39932B4327C3B1240048A02B /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		39932B4527C3C7B40048A02B /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		39932B4727C3CA840048A02B /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		39D4031427C82E2000DE485D /* TibberAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TibberAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		39D4031627C82E2000DE485D /* PowerUpsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpsTests.swift; sourceTree = "<group>"; };
+		39D4031D27C91FCC00DE485D /* ImageDownloaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		392EA81E27C393B8000C8A00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39D4031127C82E2000DE485D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -65,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				392EA82327C393B8000C8A00 /* TibberAssignment */,
+				39D4031527C82E2000DE485D /* TibberAssignmentTests */,
 				392EA82227C393B8000C8A00 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				392EA82127C393B8000C8A00 /* TibberAssignment.app */,
+				39D4031427C82E2000DE485D /* TibberAssignmentTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,6 +167,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		39D4031527C82E2000DE485D /* TibberAssignmentTests */ = {
+			isa = PBXGroup;
+			children = (
+				39D4031D27C91FCC00DE485D /* ImageDownloaderTest.swift */,
+				39D4031627C82E2000DE485D /* PowerUpsTests.swift */,
+			);
+			path = TibberAssignmentTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -163,6 +196,24 @@
 			productReference = 392EA82127C393B8000C8A00 /* TibberAssignment.app */;
 			productType = "com.apple.product-type.application";
 		};
+		39D4031327C82E2000DE485D /* TibberAssignmentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39D4031C27C82E2000DE485D /* Build configuration list for PBXNativeTarget "TibberAssignmentTests" */;
+			buildPhases = (
+				39D4031027C82E2000DE485D /* Sources */,
+				39D4031127C82E2000DE485D /* Frameworks */,
+				39D4031227C82E2000DE485D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				39D4031927C82E2000DE485D /* PBXTargetDependency */,
+			);
+			name = TibberAssignmentTests;
+			productName = TibberAssignmentTests;
+			productReference = 39D4031427C82E2000DE485D /* TibberAssignmentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -175,6 +226,10 @@
 				TargetAttributes = {
 					392EA82027C393B8000C8A00 = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					39D4031327C82E2000DE485D = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 392EA82027C393B8000C8A00;
 					};
 				};
 			};
@@ -192,6 +247,7 @@
 			projectRoot = "";
 			targets = (
 				392EA82027C393B8000C8A00 /* TibberAssignment */,
+				39D4031327C82E2000DE485D /* TibberAssignmentTests */,
 			);
 		};
 /* End PBXProject section */
@@ -204,6 +260,13 @@
 				392EA83127C393B9000C8A00 /* LaunchScreen.storyboard in Resources */,
 				392EA82E27C393B9000C8A00 /* Assets.xcassets in Resources */,
 				392EA82C27C393B8000C8A00 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39D4031227C82E2000DE485D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +295,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		39D4031027C82E2000DE485D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39D4031E27C91FCC00DE485D /* ImageDownloaderTest.swift in Sources */,
+				39D4031727C82E2000DE485D /* PowerUpsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		39D4031927C82E2000DE485D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 392EA82027C393B8000C8A00 /* TibberAssignment */;
+			targetProxy = 39D4031827C82E2000DE485D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		392EA82A27C393B8000C8A00 /* Main.storyboard */ = {
@@ -426,6 +506,42 @@
 			};
 			name = Release;
 		};
+		39D4031A27C82E2000DE485D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PV48483GG2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.study.TibberAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TibberAssignment.app/TibberAssignment";
+			};
+			name = Debug;
+		};
+		39D4031B27C82E2000DE485D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PV48483GG2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.study.TibberAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TibberAssignment.app/TibberAssignment";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -443,6 +559,15 @@
 			buildConfigurations = (
 				392EA83627C393B9000C8A00 /* Debug */,
 				392EA83727C393B9000C8A00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39D4031C27C82E2000DE485D /* Build configuration list for PBXNativeTarget "TibberAssignmentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39D4031A27C82E2000DE485D /* Debug */,
+				39D4031B27C82E2000DE485D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -14,7 +14,7 @@ class PowerUpsViewController: UIViewController {
     private lazy var dataSource = makeDataSource()
     private var subscriptions = Set<AnyCancellable>()
     private var powerUps = [PowerUps]()
-    let viewModal = PowerUpsViewModel()
+    let viewModal = PowerUpsViewModel(apiClient: APIClient())
     
     // MARK: - Views
     private let collectionView: UICollectionView = {

@@ -7,11 +7,20 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class PowerUpsViewModel {
+    
+    // MARK: - Properties
+    let apiClient: Requestable
+    
+    init(apiClient: Requestable) {
+        self.apiClient = apiClient
+    }
+    
     func fetchData() -> AnyPublisher<[PowerUps], Error> {
         let urlRequest = GraphQLOperation.powerUpsOperationRequest()
-        let response: AnyPublisher<Response<[PowerUps]>, Error> = APIClient.make(urlRequest, JSONDecoder())
+        let response: AnyPublisher<Response<[PowerUps]>, Error> = apiClient.make(urlRequest, JSONDecoder())
         return response.map({$0.data.assignmentData}).eraseToAnyPublisher()
     }
     

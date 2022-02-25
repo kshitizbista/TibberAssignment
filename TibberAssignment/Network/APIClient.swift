@@ -9,12 +9,11 @@ import Foundation
 import Combine
 
 protocol Requestable {
-    static func make<T: Decodable>(_ request: URLRequest, _ decoder: JSONDecoder) -> AnyPublisher<T, Error>
+    func make<T: Decodable>(_ request: URLRequest, _ decoder: JSONDecoder) -> AnyPublisher<T, Error>
 }
 
 struct APIClient: Requestable {
-    private init () {}
-    static func make<T>(_ request: URLRequest, _ decoder: JSONDecoder) -> AnyPublisher<T, Error> where T : Decodable {
+    func make<T>(_ request: URLRequest, _ decoder: JSONDecoder) -> AnyPublisher<T, Error> where T : Decodable {
         URLSession.shared
             .dataTaskPublisher(for: request)
             .tryMap { response in
@@ -28,7 +27,7 @@ struct APIClient: Requestable {
                     throw APIError.statusCode(httpURLResponse.statusCode)
                 }
             }
-            .decode(type: T.self, decoder: JSONDecoder())
+            .decode(type: T.self, decoder: decoder)
             .mapError({APIError.map($0)})
             .eraseToAnyPublisher()
     }
