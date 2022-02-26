@@ -217,10 +217,10 @@ extension PowerUpDetailViewController {
     private func activateContainerConstraint() {
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.widthAnchor),
         ])
     }
     
@@ -252,8 +252,8 @@ extension PowerUpDetailViewController {
     private func activateButtonConstraint() {
         NSLayoutConstraint.activate([
             buttonViews.topAnchor.constraint(equalTo: headerView.bottomAnchor),
-            buttonViews.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            buttonViews.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            buttonViews.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            buttonViews.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             buttonViews.bottomAnchor.constraint(equalTo: descriptionView.topAnchor),
         ])
         
