@@ -14,6 +14,7 @@ class PowerUpsViewController: UIViewController {
     private lazy var dataSource = makeDataSource()
     private var subscriptions = Set<AnyCancellable>()
     private var powerUps = [PowerUps]()
+    private let networkMonitor = NetworkMonitor.shared
     let viewModal = PowerUpsViewModel(apiClient: APIClient())
     
     // MARK: - Views
@@ -83,26 +84,39 @@ class PowerUpsViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
     
-    private func subscribePowerUpsAPI() {
+     private func subscribePowerUpsAPI() {
+         if !networkMonitor.isReachable {
+             handleRetryError(title: "Network Error", message: "No Internet Connection") { [weak self] in
+                 self?.subscribePowerUpsAPI()
+             }
+         }
         viewModal.fetchData()
+            .receive(on: DispatchQueue.main)
             .handleEvents(receiveSubscription: { [weak self] _ in
                 self?.activityIndicator.startAnimating()
+            }, receiveCompletion: { [weak self] _ in
+                self?.activityIndicator.stopAnimating()
             })
-            .receive(on: DispatchQueue.main)
-            .replaceError(with: [])
-            .sink { [weak self] data in
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished: break
+                case .failure(_):
+                    self?.handleRetryError {
+                        self?.subscribePowerUpsAPI()
+                    }
+                }
+            }, receiveValue: { [weak self] data in
                 guard let self = self else {
                     return
                 }
-                self.activityIndicator.removeFromSuperview()
                 if data.count > 0 {
                     self.powerUps = data
+                    self.noPowerUpsLabel.isHidden = true
                     self.applySnapshot(data: self.viewModal.sort(self.powerUps))
                 } else {
                     self.noPowerUpsLabel.isHidden = false
                 }
-            }
-            .store(in: &subscriptions)
+            }).store(in: &subscriptions)
     }
     
     private func cellRegistration() {
