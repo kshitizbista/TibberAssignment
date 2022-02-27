@@ -11,6 +11,6 @@
 <table>
   <tr>
     <td><img src="SupportingFiles/Screenshots/ListPage.png"></td>
-    <td><img src="SupportingFiles/Screenshots/ListPage.png"></td>
+    <td><img src="SupportingFiles/Screenshots/DetailPage.png"></td>
   </tr>
 </table>
