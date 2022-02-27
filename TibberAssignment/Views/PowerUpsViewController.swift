@@ -84,12 +84,15 @@ class PowerUpsViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
     
-     private func subscribePowerUpsAPI() {
-         if !networkMonitor.isReachable {
-             handleRetryError(title: "Network Error", message: "No Internet Connection") { [weak self] in
-                 self?.subscribePowerUpsAPI()
-             }
-         }
+    private func subscribePowerUpsAPI() {
+        //  Test reachability in the real device. iOS simulator shows inconsistent internet connection behavior (bug).
+        //  https://www.reddit.com/r/swift/comments/ir8wn5/network_connectivity_is_always_unsatisfied_when/
+        //  https://stackoverflow.com/questions/57223756/nwpathmonitor-not-calling-satisfied-in-swift
+        if !networkMonitor.isReachable {
+            handleRetryError(title: "Network Error", message: "No Internet Connection") { [weak self] in
+                self?.subscribePowerUpsAPI()
+            }
+        }
         viewModal.fetchData()
             .receive(on: DispatchQueue.main)
             .handleEvents(receiveSubscription: { [weak self] _ in
@@ -128,6 +131,10 @@ class PowerUpsViewController: UIViewController {
         collectionView.register(DisclosureAccessoryReusableView.self,
                                 forSupplementaryViewOfKind: DisclosureAccessoryReusableView.identifier,
                                 withReuseIdentifier: DisclosureAccessoryReusableView.identifier)
+    }
+    
+    deinit {
+        networkMonitor.stopMonitoring()
     }
 }
 
