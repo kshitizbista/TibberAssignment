@@ -21,6 +21,8 @@
 		394B68E027C81FC9003D31C4 /* PowerUpsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394B68DF27C81FC9003D31C4 /* PowerUpsViewModel.swift */; };
 		394EF7AA27CAE6DB00D9B41B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394EF7A927CAE6DB00D9B41B /* Extensions.swift */; };
 		396BD7B927C6BCCE003031AF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396BD7B827C6BCCE003031AF /* Constant.swift */; };
+		39820A0B27CBAAE900E3FC86 /* DetailPage.png in Resources */ = {isa = PBXBuildFile; fileRef = 39820A0927CBAAE800E3FC86 /* DetailPage.png */; };
+		39820A0C27CBAAE900E3FC86 /* ListPage.png in Resources */ = {isa = PBXBuildFile; fileRef = 39820A0A27CBAAE800E3FC86 /* ListPage.png */; };
 		39932B4027C3971D0048A02B /* PowerUps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B3F27C3971D0048A02B /* PowerUps.swift */; };
 		39932B4227C39CBB0048A02B /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4127C39CBB0048A02B /* Payload.swift */; };
 		39932B4427C3B1240048A02B /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4327C3B1240048A02B /* Response.swift */; };
@@ -58,6 +60,8 @@
 		394B68DF27C81FC9003D31C4 /* PowerUpsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpsViewModel.swift; sourceTree = "<group>"; };
 		394EF7A927CAE6DB00D9B41B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		396BD7B827C6BCCE003031AF /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		39820A0927CBAAE800E3FC86 /* DetailPage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DetailPage.png; sourceTree = "<group>"; };
+		39820A0A27CBAAE800E3FC86 /* ListPage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ListPage.png; sourceTree = "<group>"; };
 		39932B3F27C3971D0048A02B /* PowerUps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUps.swift; sourceTree = "<group>"; };
 		39932B4127C39CBB0048A02B /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		39932B4327C3B1240048A02B /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
@@ -87,17 +91,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3901D5FF27CB9D8300985202 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		392EA81827C393B8000C8A00 = {
 			isa = PBXGroup;
 			children = (
-				3901D5FF27CB9D8300985202 /* Supporting Files */,
+				39820A0727CBAAE800E3FC86 /* SupportingFiles */,
 				392EA82327C393B8000C8A00 /* TibberAssignment */,
 				39D4031527C82E2000DE485D /* TibberAssignmentTests */,
 				392EA82227C393B8000C8A00 /* Products */,
@@ -146,6 +143,23 @@
 				394EF7A927CAE6DB00D9B41B /* Extensions.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		39820A0727CBAAE800E3FC86 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				39820A0827CBAAE800E3FC86 /* Screenshots */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		39820A0827CBAAE800E3FC86 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				39820A0927CBAAE800E3FC86 /* DetailPage.png */,
+				39820A0A27CBAAE800E3FC86 /* ListPage.png */,
+			);
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 		39932B3B27C396370048A02B /* Network */ = {
@@ -272,6 +286,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				392EA83127C393B9000C8A00 /* LaunchScreen.storyboard in Resources */,
+				39820A0B27CBAAE900E3FC86 /* DetailPage.png in Resources */,
+				39820A0C27CBAAE900E3FC86 /* ListPage.png in Resources */,
 				392EA82E27C393B9000C8A00 /* Assets.xcassets in Resources */,
 				392EA82C27C393B8000C8A00 /* Main.storyboard in Resources */,
 			);
