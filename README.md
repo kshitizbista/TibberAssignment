@@ -8,4 +8,9 @@
  
  ### Screenshots
  
-| ![Image](SupportingFiles/Screenshots/ListPage.png)  | ![Image](SupportingFiles/Screenshots/DetailPage.png)  |
+<table>
+  <tr>
+    <td><img src="SupportingFiles/Screenshots/ListPage.png"></td>
+    <td><img src="SupportingFiles/Screenshots/ListPage.png"></td>
+  </tr>
+</table>
