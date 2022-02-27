@@ -78,7 +78,7 @@ class PowerUpsCollectionViewCell: UICollectionViewCell {
         constraints.append(titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16))
         constraints.append(titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16))
         constraints.append(titleLabel.heightAnchor.constraint(equalToConstant: 24))
-
+        
         constraints.append(shortDescription.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16))
         constraints.append(shortDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -56))
         constraints.append(shortDescription.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2))

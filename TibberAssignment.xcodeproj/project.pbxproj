@@ -17,14 +17,29 @@
 		3940315827C3E6D400C2E815 /* PowerUpsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940315727C3E6D400C2E815 /* PowerUpsCollectionViewCell.swift */; };
 		3940315A27C42C7100C2E815 /* SectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940315927C42C7100C2E815 /* SectionHeaderReusableView.swift */; };
 		3940317E27C51C6B00C2E815 /* DisclosureAccessoryReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3940317D27C51C6B00C2E815 /* DisclosureAccessoryReusableView.swift */; };
+		394B68DD27C80882003D31C4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394B68DC27C80882003D31C4 /* APIClient.swift */; };
+		394B68E027C81FC9003D31C4 /* PowerUpsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394B68DF27C81FC9003D31C4 /* PowerUpsViewModel.swift */; };
+		394EF7AA27CAE6DB00D9B41B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394EF7A927CAE6DB00D9B41B /* Extensions.swift */; };
 		396BD7B927C6BCCE003031AF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396BD7B827C6BCCE003031AF /* Constant.swift */; };
-		39932B3E27C396B80048A02B /* PowerUpsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B3D27C396B80048A02B /* PowerUpsAPI.swift */; };
 		39932B4027C3971D0048A02B /* PowerUps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B3F27C3971D0048A02B /* PowerUps.swift */; };
 		39932B4227C39CBB0048A02B /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4127C39CBB0048A02B /* Payload.swift */; };
 		39932B4427C3B1240048A02B /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4327C3B1240048A02B /* Response.swift */; };
 		39932B4627C3C7B40048A02B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4527C3C7B40048A02B /* ImageDownloader.swift */; };
-		39932B4827C3CA840048A02B /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4727C3CA840048A02B /* AppError.swift */; };
+		39932B4827C3CA840048A02B /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39932B4727C3CA840048A02B /* APIError.swift */; };
+		39D4031727C82E2000DE485D /* PowerUpsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D4031627C82E2000DE485D /* PowerUpsTests.swift */; };
+		39D4032027C9375500DE485D /* PowerUpsNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D4031F27C9375500DE485D /* PowerUpsNetworkTests.swift */; };
+		39D4032227C9378800DE485D /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D4032127C9378800DE485D /* NetworkMonitor.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		39D4031827C82E2000DE485D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 392EA81927C393B8000C8A00 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 392EA82027C393B8000C8A00;
+			remoteInfo = TibberAssignment;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		392EA82127C393B8000C8A00 /* TibberAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TibberAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,17 +54,30 @@
 		3940315927C42C7100C2E815 /* SectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableView.swift; sourceTree = "<group>"; };
 		3940315B27C4398300C2E815 /* PowerUpDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpDetailViewController.swift; sourceTree = "<group>"; };
 		3940317D27C51C6B00C2E815 /* DisclosureAccessoryReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureAccessoryReusableView.swift; sourceTree = "<group>"; };
+		394B68DC27C80882003D31C4 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		394B68DF27C81FC9003D31C4 /* PowerUpsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpsViewModel.swift; sourceTree = "<group>"; };
+		394EF7A927CAE6DB00D9B41B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		396BD7B827C6BCCE003031AF /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		39932B3D27C396B80048A02B /* PowerUpsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpsAPI.swift; sourceTree = "<group>"; };
 		39932B3F27C3971D0048A02B /* PowerUps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUps.swift; sourceTree = "<group>"; };
 		39932B4127C39CBB0048A02B /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		39932B4327C3B1240048A02B /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		39932B4527C3C7B40048A02B /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
-		39932B4727C3CA840048A02B /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		39932B4727C3CA840048A02B /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		39D4031427C82E2000DE485D /* TibberAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TibberAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		39D4031627C82E2000DE485D /* PowerUpsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpsTests.swift; sourceTree = "<group>"; };
+		39D4031F27C9375500DE485D /* PowerUpsNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpsNetworkTests.swift; sourceTree = "<group>"; };
+		39D4032127C9378800DE485D /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		392EA81E27C393B8000C8A00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39D4031127C82E2000DE485D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -63,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				392EA82327C393B8000C8A00 /* TibberAssignment */,
+				39D4031527C82E2000DE485D /* TibberAssignmentTests */,
 				392EA82227C393B8000C8A00 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				392EA82127C393B8000C8A00 /* TibberAssignment.app */,
+				39D4031427C82E2000DE485D /* TibberAssignmentTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,6 +108,7 @@
 		392EA82327C393B8000C8A00 /* TibberAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				394B68DE27C81FAE003D31C4 /* ViewModels */,
 				396BD7B727C6BCB5003031AF /* Resources */,
 				39932B4927C3D4A30048A02B /* Views */,
 				39932B3C27C396460048A02B /* Models */,
@@ -92,10 +123,19 @@
 			path = TibberAssignment;
 			sourceTree = "<group>";
 		};
+		394B68DE27C81FAE003D31C4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				394B68DF27C81FC9003D31C4 /* PowerUpsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		396BD7B727C6BCB5003031AF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				396BD7B827C6BCCE003031AF /* Constant.swift */,
+				394EF7A927CAE6DB00D9B41B /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -103,8 +143,9 @@
 		39932B3B27C396370048A02B /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				39932B3D27C396B80048A02B /* PowerUpsAPI.swift */,
+				394B68DC27C80882003D31C4 /* APIClient.swift */,
 				39932B4527C3C7B40048A02B /* ImageDownloader.swift */,
+				39D4032127C9378800DE485D /* NetworkMonitor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -115,7 +156,7 @@
 				39932B3F27C3971D0048A02B /* PowerUps.swift */,
 				39932B4127C39CBB0048A02B /* Payload.swift */,
 				39932B4327C3B1240048A02B /* Response.swift */,
-				39932B4727C3CA840048A02B /* AppError.swift */,
+				39932B4727C3CA840048A02B /* APIError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -130,6 +171,15 @@
 				3940317D27C51C6B00C2E815 /* DisclosureAccessoryReusableView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		39D4031527C82E2000DE485D /* TibberAssignmentTests */ = {
+			isa = PBXGroup;
+			children = (
+				39D4031F27C9375500DE485D /* PowerUpsNetworkTests.swift */,
+				39D4031627C82E2000DE485D /* PowerUpsTests.swift */,
+			);
+			path = TibberAssignmentTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +202,24 @@
 			productReference = 392EA82127C393B8000C8A00 /* TibberAssignment.app */;
 			productType = "com.apple.product-type.application";
 		};
+		39D4031327C82E2000DE485D /* TibberAssignmentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39D4031C27C82E2000DE485D /* Build configuration list for PBXNativeTarget "TibberAssignmentTests" */;
+			buildPhases = (
+				39D4031027C82E2000DE485D /* Sources */,
+				39D4031127C82E2000DE485D /* Frameworks */,
+				39D4031227C82E2000DE485D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				39D4031927C82E2000DE485D /* PBXTargetDependency */,
+			);
+			name = TibberAssignmentTests;
+			productName = TibberAssignmentTests;
+			productReference = 39D4031427C82E2000DE485D /* TibberAssignmentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -164,6 +232,10 @@
 				TargetAttributes = {
 					392EA82027C393B8000C8A00 = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					39D4031327C82E2000DE485D = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 392EA82027C393B8000C8A00;
 					};
 				};
 			};
@@ -181,6 +253,7 @@
 			projectRoot = "";
 			targets = (
 				392EA82027C393B8000C8A00 /* TibberAssignment */,
+				39D4031327C82E2000DE485D /* TibberAssignmentTests */,
 			);
 		};
 /* End PBXProject section */
@@ -196,6 +269,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		39D4031227C82E2000DE485D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -204,23 +284,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				39932B4227C39CBB0048A02B /* Payload.swift in Sources */,
+				39D4032227C9378800DE485D /* NetworkMonitor.swift in Sources */,
 				39932B4027C3971D0048A02B /* PowerUps.swift in Sources */,
 				39932B4627C3C7B40048A02B /* ImageDownloader.swift in Sources */,
+				394B68E027C81FC9003D31C4 /* PowerUpsViewModel.swift in Sources */,
 				3940315A27C42C7100C2E815 /* SectionHeaderReusableView.swift in Sources */,
 				392EA82927C393B8000C8A00 /* PowerUpsViewController.swift in Sources */,
 				392EA82527C393B8000C8A00 /* AppDelegate.swift in Sources */,
 				392EA82727C393B8000C8A00 /* SceneDelegate.swift in Sources */,
 				396BD7B927C6BCCE003031AF /* Constant.swift in Sources */,
+				394B68DD27C80882003D31C4 /* APIClient.swift in Sources */,
 				392C1E7827C6AB2C00062F57 /* PowerUpDetailViewController.swift in Sources */,
-				39932B3E27C396B80048A02B /* PowerUpsAPI.swift in Sources */,
 				39932B4427C3B1240048A02B /* Response.swift in Sources */,
 				3940315827C3E6D400C2E815 /* PowerUpsCollectionViewCell.swift in Sources */,
+				394EF7AA27CAE6DB00D9B41B /* Extensions.swift in Sources */,
 				3940317E27C51C6B00C2E815 /* DisclosureAccessoryReusableView.swift in Sources */,
-				39932B4827C3CA840048A02B /* AppError.swift in Sources */,
+				39932B4827C3CA840048A02B /* APIError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39D4031027C82E2000DE485D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39D4032027C9375500DE485D /* PowerUpsNetworkTests.swift in Sources */,
+				39D4031727C82E2000DE485D /* PowerUpsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		39D4031927C82E2000DE485D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 392EA82027C393B8000C8A00 /* TibberAssignment */;
+			targetProxy = 39D4031827C82E2000DE485D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		392EA82A27C393B8000C8A00 /* Main.storyboard */ = {
@@ -414,6 +514,42 @@
 			};
 			name = Release;
 		};
+		39D4031A27C82E2000DE485D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PV48483GG2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.study.TibberAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TibberAssignment.app/TibberAssignment";
+			};
+			name = Debug;
+		};
+		39D4031B27C82E2000DE485D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PV48483GG2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.study.TibberAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TibberAssignment.app/TibberAssignment";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -431,6 +567,15 @@
 			buildConfigurations = (
 				392EA83627C393B9000C8A00 /* Debug */,
 				392EA83727C393B9000C8A00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39D4031C27C82E2000DE485D /* Build configuration list for PBXNativeTarget "TibberAssignmentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39D4031A27C82E2000DE485D /* Debug */,
+				39D4031B27C82E2000DE485D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

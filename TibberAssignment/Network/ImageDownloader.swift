@@ -9,29 +9,34 @@ import Foundation
 import Combine
 import UIKit
 
-class ImageDownloader {
-    
-    static func download(url: String) -> AnyPublisher<UIImage, AppError> {
+protocol ImageRequestable {
+    static func download(url: String) -> AnyPublisher<UIImage, Error>
+}
+
+class ImageDownloader: ImageRequestable  {
+    static func download(url: String) -> AnyPublisher<UIImage, Error> {
         guard let url = URL(string: url) else {
-            return Fail(error: AppError.invalidURL).eraseToAnyPublisher()
+            return Fail(error: APIError.invalidURL).eraseToAnyPublisher()
         }
-        return URLSession.shared.dataTaskPublisher(for: url)
+        return URLSession.shared
+            .dataTaskPublisher(for: url)
             .tryMap { response -> Data in
-                guard
-                    let httpURLResponse = response.response as? HTTPURLResponse,
-                    httpURLResponse.statusCode == 200
-                else {
-                    throw AppError.statusCode
+                guard let httpURLResponse = response.response as? HTTPURLResponse else {
+                    throw APIError.invalidResponse
                 }
-                return response.data
+                if httpURLResponse.statusCode == 200 {
+                    return response.data
+                } else {
+                    throw APIError.statusCode(httpURLResponse.statusCode)
+                }
             }
             .tryMap { data in
                 guard let image = UIImage(data: data) else {
-                    throw AppError.invalidImage
+                    throw APIError.invalidImage
                 }
                 return image
             }
-            .mapError({ AppError.map($0)})
+            .mapError({ APIError.map($0)})
             .eraseToAnyPublisher()
     }
 }
